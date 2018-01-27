@@ -34,6 +34,7 @@ const Head = (props) => (
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zilla+Slab:400,700" />
     <script src="//app.storyblok.com/f/storyblok-latest.js?t=qvOwrwasP7686hfwBsTumAtt"></script>
   </NextHead>
 )
