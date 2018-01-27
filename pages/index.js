@@ -1,35 +1,28 @@
-import Link from 'next/link'
-import Head from '../components/head'
-import Nav from '../components/nav'
-import StoryblokClient from 'storyblok-js-client'
-import React from 'react'
+import Components from '../components/index'
+import Layout from '../components/Layout'
+import StoryblokService from '../utils/StoryblokService'
 
 export default class extends React.Component {
-  static async getInitialProps({ req }) {
-    var Storyblok = new StoryblokClient({
-      accessToken: 'qvOwrwasP7686hfwBsTumAtt'
-    });
+  static async getInitialProps({ query }) {
+    StoryblokService.setQuery(query)
 
-    // Get the content of the current page
-    let response = await Storyblok.get('cdn/stories/home', {
-      version: 'draft'
-    })
+    return {
+      page: await StoryblokService.get('cdn/stories/home'),
+      settings: await StoryblokService.get('cdn/stories/en/settings')
+    }
+  }
 
-    // Get multiple content entries from a folder called "news"
-    let stories = await Storyblok.get('cdn/stories', {
-      starts_with: 'news',
-      version: 'draft'
-    })
-
-    return { story: JSON.stringify(response.data) }
+  componentDidMount() {
+    StoryblokService.initEditor()
   }
 
   render() {
     return (
-      <div>
-        Hello World
-        {this.props.story}
-      </div>
+      <Layout settings={this.props.settings.data.story}>
+        {this.props.page.data.story.content.body.map((blok) =>
+          Components(blok)
+        )}
+      </Layout>
     )
   }
 }

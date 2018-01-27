@@ -1,5 +1,14 @@
 import NextHead from 'next/head'
 import { string } from 'prop-types'
+import NProgress from 'nprogress'
+import Router from 'next/router'
+
+Router.onRouteChangeStart = (url) => {
+  console.log(`Loading: ${url}`)
+  NProgress.start()
+}
+Router.onRouteChangeComplete = () => NProgress.done()
+Router.onRouteChangeError = () => NProgress.done()
 
 const defaultDescription = ''
 const defaultOGURL = ''
@@ -7,7 +16,7 @@ const defaultOGImage = ''
 
 const Head = (props) => (
   <NextHead>
-    <meta charset="UTF-8" />
+    <meta charSet="UTF-8" />
     <title>{props.title || ''}</title>
     <meta name="description" content={props.description || defaultDescription} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,6 +33,8 @@ const Head = (props) => (
     <meta property="og:image" content={props.ogImage || defaultOGImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+
+    <script src="//app.storyblok.com/f/storyblok-latest.js?t=qvOwrwasP7686hfwBsTumAtt"></script>
   </NextHead>
 )
 
