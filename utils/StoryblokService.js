@@ -2,8 +2,10 @@ import StoryblokClient from 'storyblok-js-client'
 
 class StoryblokService {
   constructor() {
+    this.devMode = true // Always loads draft
+    this.token = 'qvOwrwasP7686hfwBsTumAtt'
     this.client = new StoryblokClient({
-      accessToken: 'qvOwrwasP7686hfwBsTumAtt',
+      accessToken: this.token,
       cache: {
         clear: 'auto',
         type: 'memory'
@@ -16,7 +18,7 @@ class StoryblokService {
   get(slug, params) {
     params = params || {}
 
-    if (this.getQuery('_storyblok')) {
+    if (this.getQuery('_storyblok') || this.devMode) {
       params.version = 'draft'
     }
 
@@ -35,6 +37,12 @@ class StoryblokService {
 
   getQuery(param) {
     return this.query[param]
+  }
+
+  bridge() {
+    return (
+      <script src={'//app.storyblok.com/f/storyblok-latest.js?t=' + this.token}></script>
+    )
   }
 }
 

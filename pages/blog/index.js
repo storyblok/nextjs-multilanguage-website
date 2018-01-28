@@ -1,6 +1,5 @@
 import {Link} from '../../routes'
 import Components from '../../components/index'
-import Head from '../../components/Head'
 import Layout from '../../components/Layout'
 import StoryblokService from '../../utils/StoryblokService'
 
