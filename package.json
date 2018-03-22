@@ -6,6 +6,7 @@
     "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
+    "crypto": "^1.0.1",
     "marked": "^0.3.12",
     "next": "^4.2.3",
     "next-routes": "^1.2.0",
