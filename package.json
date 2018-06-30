@@ -12,6 +12,7 @@
     "nprogress": "^0.2.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "hoek": "^4.2.1",
     "storyblok-js-client": "^1.0.6",
     "storyblok-react": "^0.0.4"
   },
