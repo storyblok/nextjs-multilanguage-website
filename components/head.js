@@ -2,6 +2,7 @@ import NextHead from 'next/head'
 import { string } from 'prop-types'
 import NProgress from 'nprogress'
 import Router from 'next/router'
+import StoryblokService from '../utils/StoryblokService'
 
 Router.onRouteChangeStart = (url) => {
   console.log(`Loading: ${url}`)
@@ -35,7 +36,7 @@ const Head = (props) => (
     <meta property="og:image:height" content="630" />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zilla+Slab:400,700" />
-    <script src="//app.storyblok.com/f/storyblok-latest.js?t=qvOwrwasP7686hfwBsTumAtt"></script>
+    {StoryblokService.bridge()}
   </NextHead>
 )
 

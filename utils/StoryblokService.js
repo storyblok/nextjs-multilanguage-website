@@ -2,7 +2,7 @@ import StoryblokClient from 'storyblok-js-client'
 
 class StoryblokService {
   constructor() {
-    this.devMode = true // Always loads draft
+    this.devMode = false // Always loads draft
     this.token = 'qvOwrwasP7686hfwBsTumAtt'
     this.client = new StoryblokClient({
       accessToken: this.token,
@@ -15,6 +15,10 @@ class StoryblokService {
     this.query = {}
   }
 
+  getCacheVersion() {
+    return this.client.cacheVersion
+  }
+
   get(slug, params) {
     params = params || {}
 
@@ -22,13 +26,19 @@ class StoryblokService {
       params.version = 'draft'
     }
 
+    if (typeof window !== 'undefined' && typeof window.StoryblokCacheVersion !== 'undefined') {
+      params.cv = window.StoryblokCacheVersion
+    }
+
     return this.client.get(slug, params)
   }
 
   initEditor() {
-    window.storyblok.init({initOnlyOnce: true})
-    window.storyblok.on('change', () => location.reload(true))
-    window.storyblok.on('published', () => location.reload(true))
+    if (window.storyblok) {
+      window.storyblok.init({initOnlyOnce: true})
+      window.storyblok.on('change', () => location.reload(true))
+      window.storyblok.on('published', () => location.reload(true))
+    }
   }
 
   setQuery(query) {
@@ -40,9 +50,10 @@ class StoryblokService {
   }
 
   bridge() {
-    return (
-      <script src={'//app.storyblok.com/f/storyblok-latest.js?t=' + this.token}></script>
-    )
+    if (!this.getQuery('_storyblok') && !this.devMode) {
+      return ''
+    }
+    return (<script src={'//app.storyblok.com/f/storyblok-latest.js?t=' + this.token}></script>)
   }
 }
 
