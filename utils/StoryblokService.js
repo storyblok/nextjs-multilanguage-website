@@ -22,7 +22,7 @@ class StoryblokService {
   get(slug, params) {
     params = params || {}
 
-    if (this.getQuery('_storyblok') || this.devMode) {
+    if (this.getQuery('_storyblok') || this.devMode || (typeof window !== 'undefined' && window.storyblok)) {
       params.version = 'draft'
     }
 
@@ -33,11 +33,15 @@ class StoryblokService {
     return this.client.get(slug, params)
   }
 
-  initEditor() {
+  initEditor(reactComponent) {
     if (window.storyblok) {
-      window.storyblok.init({initOnlyOnce: true})
-      window.storyblok.on('change', () => location.reload(true))
-      window.storyblok.on('published', () => location.reload(true))
+      window.storyblok.init()
+      window.storyblok.on(['change', 'published'], () => location.reload(true))
+      window.storyblok.on('input', (event) => {
+        if (event.story.content._uid === reactComponent.state.pageContent._uid) {
+          reactComponent.setState({pageContent: event.story.content})
+        }
+      })
     }
   }
 

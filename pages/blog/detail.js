@@ -6,30 +6,40 @@ import SbEditable from 'storyblok-react'
 import marked from 'marked'
 
 export default class extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {pageContent: props.page.data.story.content}
+  }
+
   static async getInitialProps({ asPath, query }) {
     StoryblokService.setQuery(query)
 
+    let [page, settings] = await Promise.all([
+      StoryblokService.get(`cdn/stories${asPath}`),
+      StoryblokService.get(`cdn/stories/${query.language}/settings`)
+    ])
+
     return {
-      page: await StoryblokService.get(`cdn/stories${asPath}`),
-      settings: await StoryblokService.get(`cdn/stories/${query.language}/settings`)
+      page,
+      settings
     }
   }
 
   componentDidMount() {
-    StoryblokService.initEditor()
+    StoryblokService.initEditor(this)
   }
 
   body() {
-    let rawMarkup = marked(this.props.page.data.story.content.body)
+    let rawMarkup = marked(this.state.pageContent.body)
     return { __html:  rawMarkup}
   }
 
   render() {
     return (
       <Layout settings={this.props.settings.data.story}>
-        <SbEditable content={this.props.page.data.story.content}>
+        <SbEditable content={this.state.pageContent}>
           <div className="blog">
-            <h1>{this.props.page.data.story.content.name}</h1>
+            <h1>{this.state.pageContent.name}</h1>
             <div dangerouslySetInnerHTML={this.body()} className="blog__body"></div>
           </div>
         </SbEditable>

@@ -7,16 +7,17 @@ export default class extends React.Component {
   static async getInitialProps({ query }) {
     StoryblokService.setQuery(query)
 
-    return {
-      blogPosts: await StoryblokService.get('cdn/stories', {
+    let [blogPosts, settings] = await Promise.all([
+      StoryblokService.get('cdn/stories', {
         starts_with: `${query.language}/blog`
       }),
-      settings: await StoryblokService.get(`cdn/stories/${query.language}/settings`)
-    }
-  }
+      StoryblokService.get(`cdn/stories/${query.language}/settings`)
+    ])
 
-  componentDidMount() {
-    StoryblokService.initEditor()
+    return {
+      blogPosts,
+      settings
+    }
   }
 
   render() {

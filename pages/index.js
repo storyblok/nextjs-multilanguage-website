@@ -3,23 +3,33 @@ import Layout from '../components/Layout'
 import StoryblokService from '../utils/StoryblokService'
 
 export default class extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {pageContent: props.page.data.story.content}
+  }
+
   static async getInitialProps({ query }) {
     StoryblokService.setQuery(query)
 
+    let [page, settings] = await Promise.all([
+      StoryblokService.get('cdn/stories/home'),
+      StoryblokService.get('cdn/stories/en/settings')
+    ])
+
     return {
-      page: await StoryblokService.get('cdn/stories/home'),
-      settings: await StoryblokService.get('cdn/stories/en/settings')
+      page,
+      settings
     }
   }
 
   componentDidMount() {
-    StoryblokService.initEditor()
+    StoryblokService.initEditor(this)
   }
 
   render() {
     return (
       <Layout settings={this.props.settings.data.story}>
-        {Components(this.props.page.data.story.content)}
+        {Components(this.state.pageContent)}
       </Layout>
     )
   }
