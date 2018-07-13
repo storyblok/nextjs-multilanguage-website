@@ -14,7 +14,8 @@
     "react-dom": "^16.2.0",
     "hoek": "^4.2.1",
     "storyblok-js-client": "^1.0.13",
-    "storyblok-react": "^0.0.4"
+    "storyblok-react": "^0.0.4",
+    "ssri": "~> 5.2.2"
   },
   "devDependencies": {}
 }
