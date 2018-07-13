@@ -1,13 +1,13 @@
 {
-  "name": "up-test",
+  "name": "up-next",
   "profile": "default",
   "regions": ["eu-west-1"],
   "hooks": {
     "build": "npm run build"
   },
   "stages": {
-    "development": {
-      "domain": "dev-next.blok.ink"
+    "staging": {
+      "domain": "next.blok.ink"
     }
   }
 }
