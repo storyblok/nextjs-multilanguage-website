@@ -1,20 +1,15 @@
 {
   "name": "create-next-example-app",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "next",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "next start"
   },
   "dependencies": {
-    "marked": "^0.3.12",
     "next": "^4.2.3",
-    "next-routes": "^1.2.0",
-    "nprogress": "^0.2.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "hoek": "^4.2.1",
-    "storyblok-js-client": "^1.0.13",
-    "storyblok-react": "^0.0.4",
     "ssri": "~> 5.2.2"
   },
   "devDependencies": {}
