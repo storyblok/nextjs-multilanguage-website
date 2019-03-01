@@ -7,7 +7,7 @@ export default class extends React.Component {
   }
 
   render() {
-    const { settings } = this.props;
+    const { settings } = this.props
     return (
       <header className="top-header util__flex util__container">
         <nav className="top-header__col">

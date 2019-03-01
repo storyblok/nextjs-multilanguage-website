@@ -31,7 +31,7 @@ export default class extends React.Component {
   }
 
   render() {
-    const { content } = this.props;
+    const { content } = this.props
     return (
       <SbEditable content={content}>
         <div className="teaser">
