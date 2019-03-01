@@ -13,11 +13,11 @@ export default class extends React.Component {
         <nav className="top-header__col">
           <ul className="top-header__nav">
             {settings && settings.content.main_navi.map((navitem, index) =>
-              <li key={index}>
-                <Link route={navitem.link.cached_url} prefetch>
-                  <a className="top-header__link">{navitem.name}</a>
-                </Link>
-              </li>
+                <li key={index}>
+                  <Link route={navitem.link.cached_url} prefetch>
+                    <a className="top-header__link">{navitem.name}</a>
+                  </Link>
+                </li>
             )}
           </ul>
         </nav>
@@ -28,6 +28,9 @@ export default class extends React.Component {
           <ul className="top-header__nav top-header__nav--right">
             <li>
               <Link route="/en/blog"><a className="top-header__link">English</a></Link>
+            </li>
+            <li>
+              <Link route="/de/blog"><a className="top-header__link">German</a></Link>
             </li>
           </ul>
         </nav>
