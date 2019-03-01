@@ -10,7 +10,7 @@ class StoryblokService {
         clear: 'auto',
         type: 'memory'
       }
-    });
+    })
 
     this.query = {}
   }
@@ -20,7 +20,7 @@ class StoryblokService {
   }
 
   get(slug, params) {
-    params = params || {};
+    params = params || {}
 
     if (this.getQuery('_storyblok') || this.devMode || (typeof window !== 'undefined' && window.storyblok)) {
       params.version = 'draft'

@@ -1,7 +1,7 @@
 import React from 'react'
-import Components from '../components/index';
-import Layout from '../components/layout';
-import StoryblokService from '../utils/storyblok-service';
+import Components from '../components/index'
+import Layout from '../components/layout'
+import StoryblokService from '../utils/storyblok-service'
 
 export default class extends React.Component {
   constructor(props) {
@@ -30,8 +30,8 @@ export default class extends React.Component {
   }
 
   render() {
-    const { settings } = this.props;
-    const { pageContent } = this.state;
+    const { settings } = this.props
+    const { pageContent } = this.state
     return (
       <Layout settings={settings.data.story}>
         {Components(pageContent)}

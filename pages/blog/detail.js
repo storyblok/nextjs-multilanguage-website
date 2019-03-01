@@ -38,8 +38,8 @@ export default class extends React.Component {
   }
 
   render() {
-    const { settings } = this.props;
-    const { pageContent } = this.state;
+    const { settings } = this.props
+    const { pageContent } = this.state
     return (
       <Layout settings={settings.data.story}>
         <SbEditable content={pageContent}>

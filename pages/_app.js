@@ -9,16 +9,16 @@ class MyApp extends App {
         }
         return {
             pageProps,
-        };
+        }
     }
     render () {
-        const { Component, pageProps } = this.props;
+        const { Component, pageProps } = this.props
         return (
             <Container>
                 <Component {...pageProps} />
             </Container>
-        );
+        )
     }
 }
 
-export default MyApp;
+export default MyApp

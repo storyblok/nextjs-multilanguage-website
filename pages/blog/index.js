@@ -23,11 +23,11 @@ export default class extends React.Component {
   }
 
   render() {
-    const { settings, blogPosts } = this.props;
+    const { settings, blogPosts } = this.props
     return (
       <Layout settings={settings.data.story}>
         {blogPosts.data.stories.map((blogPost, index) => {
-          const { published_at, content: { name, intro }} = blogPost;
+          const { published_at, content: { name, intro }} = blogPost
           return (
              <div key={index} className="blog__overview">
                 <h2>
