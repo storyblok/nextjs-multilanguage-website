@@ -3,7 +3,7 @@ import StoryblokClient from 'storyblok-js-client'
 class StoryblokService {
   constructor() {
     this.devMode = false // Always loads draft
-    this.token = YOUR_PREVIEW_TOKEN_HERE
+    this.token = 'qvOwrwasP7686hfwBsTumAtt'
     this.client = new StoryblokClient({
       accessToken: this.token,
       cache: {
