@@ -1,23 +1,25 @@
+import React from 'react'
 import Components from './index'
 import SbEditable from 'storyblok-react'
-import React from 'react'
 
 export default class extends React.Component {
   resizedIcon(index) {
-    if (typeof this.props.content.icon !== 'undefined') {
-      return '//img2.storyblok.com/80x80' + this.props.content.icon.replace('//a.storyblok.com', '')
+    const { content } = this.props
+    if (typeof content.icon !== 'undefined') {
+      return content.icon.replace('//img2.storyblok.com/80x80', 'https://a.storyblok.com')
     }
     return null
   }
 
   render() {
+    const { content } = this.props
     return (
-      <SbEditable content={this.props.content}>
+      <SbEditable content={content}>
         <div className="feature util__flex-eq">
           <img src={this.resizedIcon()} className="feature__icon" />
-          <h2>{this.props.content.name}</h2>
+          <h2>{content.name}</h2>
           <div className="feature__description">
-            {this.props.content.description}
+            {content.description}
           </div>
           <style jsx>{`
             .feature {

@@ -1,7 +1,9 @@
-import {Link} from '../../routes'
+import React from 'react'
+import { Link } from '../../routes'
 import Components from '../../components/index'
-import Layout from '../../components/Layout'
-import StoryblokService from '../../utils/StoryblokService'
+import Head from '../../components/head'
+import Layout from '../../components/layout'
+import StoryblokService from '../../utils/storyblok-service'
 
 export default class extends React.Component {
   static async getInitialProps({ query }) {
@@ -21,26 +23,30 @@ export default class extends React.Component {
   }
 
   render() {
+    const { settings, blogPosts } = this.props
     return (
-      <Layout settings={this.props.settings.data.story}>
-        {this.props.blogPosts.data.stories.map((blogPost, index) => 
-          <div key={index} className="blog__overview">
-            <h2>
-              <Link route={'/' + blogPost.full_slug}>
-                <a className="blog__detail-link">
-                  {blogPost.content.name}
-                </a>
-              </Link>
-            </h2>
-            <small>
-              {blogPost.published_at}
-            </small>
-            <p>
-              {blogPost.content.intro}
-            </p>
-          </div>
-        )}
-
+      <Layout settings={settings.data.story}>
+        {blogPosts.data.stories.map((blogPost, index) => {
+          const { published_at, content: { name, intro }} = blogPost
+          return (
+             <div key={index} className="blog__overview">
+                <h2>
+                  <Link route={'/' + blogPost.full_slug}>
+                    <a className="blog__detail-link">
+                      {name}
+                    </a>
+                  </Link>
+                </h2>
+                <small>
+                  {published_at}
+                </small>
+                <p>
+                  {intro}
+                </p>
+              </div>
+            )}
+          )
+        }
         <style jsx>{`
           .blog__overview {
             padding: 0 20px;

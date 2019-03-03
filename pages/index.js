@@ -1,11 +1,14 @@
+import React from 'react'
 import Components from '../components/index'
-import Layout from '../components/Layout'
-import StoryblokService from '../utils/StoryblokService'
+import Layout from '../components/layout'
+import StoryblokService from '../utils/storyblok-service'
 
 export default class extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {pageContent: props.page.data.story.content}
+    this.state = {
+      pageContent: props.page.data.story.content,
+    }
   }
 
   static async getInitialProps({ query }) {
@@ -27,9 +30,11 @@ export default class extends React.Component {
   }
 
   render() {
+    const { settings } = this.props
+    const { pageContent } = this.state
     return (
-      <Layout settings={this.props.settings.data.story}>
-        {Components(this.state.pageContent)}
+      <Layout settings={settings.data.story}>
+        {Components(pageContent)}
       </Layout>
     )
   }

@@ -1,3 +1,4 @@
+import React from 'react'
 import Components from './index'
 
 export default (props) => (

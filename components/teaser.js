@@ -1,11 +1,13 @@
+import React from 'react'
 import Components from './index'
 import SbEditable from 'storyblok-react'
-import React from 'react'
 
 export default class extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {currentSlide: 0}
+    this.state = {
+      currentSlide: 0
+    }
   }
 
   slide() {
@@ -29,13 +31,13 @@ export default class extends React.Component {
   }
 
   render() {
+    const { content } = this.props
     return (
-      <SbEditable content={this.props.content}>
+      <SbEditable content={content}>
         <div className="teaser">
           {this.slide() ? Components(this.slide()) : ''}
-
           <div className="teaser__pag">
-            {this.props.content.body.map((blok, index) =>
+            {content.body.map((blok, index) =>
               <button key={index} onClick={() => this.handleDotClick(index)}
                 className={this.pagClass(index)}>Next</button>
             )}

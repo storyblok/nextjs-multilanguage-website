@@ -1,14 +1,17 @@
-import {Link} from '../../routes'
+import React from 'react'
+import { Link } from '../../routes'
 import Components from '../../components/index'
-import Layout from '../../components/Layout'
-import StoryblokService from '../../utils/StoryblokService'
+import Layout from '../../components/layout'
+import StoryblokService from '../../utils/storyblok-service'
 import SbEditable from 'storyblok-react'
 import marked from 'marked'
 
 export default class extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {pageContent: props.page.data.story.content}
+    this.state = {
+      pageContent: props.page.data.story.content
+    }
   }
 
   static async getInitialProps({ asPath, query }) {
@@ -35,11 +38,13 @@ export default class extends React.Component {
   }
 
   render() {
+    const { settings } = this.props
+    const { pageContent } = this.state
     return (
-      <Layout settings={this.props.settings.data.story}>
-        <SbEditable content={this.state.pageContent}>
+      <Layout settings={settings.data.story}>
+        <SbEditable content={pageContent}>
           <div className="blog">
-            <h1>{this.state.pageContent.name}</h1>
+            <h1>{pageContent.name}</h1>
             <div dangerouslySetInnerHTML={this.body()} className="blog__body"></div>
           </div>
         </SbEditable>

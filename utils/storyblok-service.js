@@ -39,7 +39,7 @@ class StoryblokService {
       window.storyblok.on(['change', 'published'], () => location.reload(true))
       window.storyblok.on('input', (event) => {
         if (event.story.content._uid === reactComponent.state.pageContent._uid) {
-          reactComponent.setState({pageContent: event.story.content})
+          reactComponent.setState({pageContent: window.storyblok.addComments(event.story.content, event.story.id)})
         }
       })
     }
