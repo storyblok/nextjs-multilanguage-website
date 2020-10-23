@@ -1,12 +1,14 @@
 import Teaser from './Teaser'
 import Feature from './Feature'
+import FeaturedPosts from './FeaturedPosts'
 import Grid from './Grid'
 import Placeholder from './Placeholder'
 
 const Components = {
   'teaser': Teaser,
   'grid': Grid,
-  'feature': Feature
+  'feature': Feature,
+  'featured-posts': FeaturedPosts
 }
 
 const DynamicComponent = ({blok}) => {
