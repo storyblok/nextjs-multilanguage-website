@@ -32,7 +32,7 @@ const Navigation = ({settings}) => (
               <a href="/" className="block px-4 py-1 md:p-2 lg:px-8">Home</a>
             </li>
             <li>
-              <a href="/" className="block px-4 py-1 md:p-2 lg:px-8">About</a>
+              <a href="/blog" className="block px-4 py-1 md:p-2 lg:px-8">Blog</a>
             </li>
           </ul>
           <ul className="flex flex-col mt-4 -mx-4 pt-4 border-t md:flex-row md:items-center md:mx-0 md:mt-0 md:pt-0 md:border-0">
