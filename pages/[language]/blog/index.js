@@ -1,23 +1,27 @@
-import Layout from "../../components/Layout";
-import StoryblokService from "../../utils/storyblok-service";
+import Layout from "../../../components/Layout";
+import StoryblokService from "../../../utils/storyblok-service";
 
 export default class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       stories: props.res.data.stories,
+      language: props.language,
     };
   }
 
   static async getInitialProps({ query }) {
     StoryblokService.setQuery(query);
 
-    const res = await StoryblokService.get("cdn/stories", {
-      starts_with: "blog/",
+    let language = query.language || "en"
+    let insertLanguage = language !== "en" ? `${language}/` : ""
+    const res = await StoryblokService.get(`cdn/stories`, {
+      starts_with: `${insertLanguage}blog/`,
     });
 
     return {
       res,
+      language
     };
   }
 
@@ -29,7 +33,7 @@ export default class extends React.Component {
     const posts = this.state.stories;
 
     return (
-      <Layout>
+      <Layout language={this.state.language}>
         <main className="container mx-auto">
           <h1 className="text-5xl font-bold font-serif text-primary tracking-wide pt-12">
             All Posts
@@ -37,7 +41,7 @@ export default class extends React.Component {
 
           <ul>
             {posts.map((post) => (
-              <li className="max-w-4xl px-10 my-4 py-6 rounded-lg shadow-md bg-white">
+              <li key={post._uid} className="max-w-4xl px-10 my-4 py-6 rounded-lg shadow-md bg-white">
                 <div className="flex justify-between items-center">
                   <span className="font-light text-gray-600">
                     {`

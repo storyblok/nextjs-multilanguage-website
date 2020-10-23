@@ -1,23 +1,26 @@
 import React from 'react'
-import Layout from '../../components/Layout'
-import BlogPost from '../../components/BlogPost'
-import StoryblokService from '../../utils/storyblok-service'
+import Layout from '../../../components/Layout'
+import BlogPost from '../../../components/BlogPost'
+import StoryblokService from '../../../utils/storyblok-service'
 
 export default class extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-          story: props.res.data.story
+          story: props.res.data.story,
+          language: props.language,
         }
       }
     
       static async getInitialProps({ asPath, query }) {
         StoryblokService.setQuery(query)
     
+        let language = query.language || "en"
         let res = await StoryblokService.get(`cdn/stories${asPath}`)
     
         return {
-          res
+          res,
+          language
         }
       }
     
@@ -30,7 +33,7 @@ export default class extends React.Component {
     const contentOfStory = this.state.story.content
 
     return (
-      <Layout>
+      <Layout language={this.state.language}>
         <BlogPost blok={contentOfStory} />
       </Layout>
     )

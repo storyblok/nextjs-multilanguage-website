@@ -1,4 +1,4 @@
-const Navigation = ({settings}) => (
+const Navigation = ({ language }) => (
   <header className="w-full bg-white">
     <nav className="" role="navigation">
       <div className="container mx-auto p-4 flex flex-wrap items-center md:flex-no-wrap">
@@ -32,15 +32,17 @@ const Navigation = ({settings}) => (
               <a href="/" className="block px-4 py-1 md:p-2 lg:px-8">Home</a>
             </li>
             <li>
-              <a href="/blog" className="block px-4 py-1 md:p-2 lg:px-8">Blog</a>
+              <a href={`/${language}/blog`} className="block px-4 py-1 md:p-2 lg:px-8">Blog</a>
             </li>
           </ul>
           <ul className="flex flex-col mt-4 -mx-4 pt-4 border-t md:flex-row md:items-center md:mx-0 md:mt-0 md:pt-0 md:border-0">
             <li>
-              <a href="" className="block px-4 py-1 md:p-2 rounded-lg lg:px-4 bg-black text-white">EN</a>
+              <a href="/" className={`block px-4 py-1 md:p-2 rounded-lg lg:px-4 
+              ${language === "en" ? "bg-black text-white" : ""}`}>EN</a>
             </li>
             <li>
-              <a href="/de" className="block px-4 py-1 md:p-2 rounded-lg lg:px-4">DE</a>
+              <a href="/de" className={`block px-4 py-1 md:p-2 rounded-lg lg:px-4 
+              ${language === "de" ? "bg-black text-white" : ""}`}>DE</a>
             </li>
           </ul>
         </div>
