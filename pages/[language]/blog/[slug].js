@@ -16,11 +16,12 @@ export default class extends React.Component {
         StoryblokService.setQuery(query)
     
         let language = query.language || "en"
-        let res = await StoryblokService.get(`cdn/stories${asPath}`)
+        let trimDefault = asPath.replace("/en/blog", "/blog")
+        let res = await StoryblokService.get(`cdn/stories${trimDefault}`)
     
         return {
           res,
-          language
+          language,
         }
       }
     
