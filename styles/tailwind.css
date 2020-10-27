@@ -1,0 +1,6 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+.bg-white-half {
+    background: linear-gradient(to bottom, #fff 0%, #fff 50%, transparent 50%)
+}

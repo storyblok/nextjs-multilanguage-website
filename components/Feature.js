@@ -1,32 +1,19 @@
+import React from 'react'
 import SbEditable from 'storyblok-react'
+import DynamicIcon from './icons/DynamicIcon'
 
 const Feature = ({blok}) => {
-  const resizedIcon = function(iconImage) {
-    if (typeof iconImage !== 'undefined') {
-      return iconImage.replace('//img2.storyblok.com/80x80', '//a.storyblok.com')
-    }
-    return null
-  }
-
   return (
-    <SbEditable content={blok}>
-      <div className="feature util__flex-eq">
-        <img src={resizedIcon(blok.icon)} className="feature__icon" />
-        <h2>{blok.name}</h2>
-        <div className="feature__description">
-          {blok.description}
+    <SbEditable content={blok} key={blok._uid}>
+      <div className="py-16 max-w-sm p-2 sm:p-10 text-center flex flex-col items-center">
+            <DynamicIcon type={blok.icon} />
+            <div className="px-6 py-4">
+                <div className="font-bold text-xl my-4">{blok.name}</div>
+                <p className="text-base text-gray-600">
+                  {blok.description}
+                </p>
+            </div>
         </div>
-        <style jsx>{`
-          .feature {
-            text-align: center;
-            padding: 30px 10px 100px;
-          }
-
-          .feature__icon {
-            max-width: 80px;
-          }
-        `}</style>
-      </div>
     </SbEditable>
   )
 }

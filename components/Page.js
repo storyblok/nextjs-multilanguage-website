@@ -1,11 +1,11 @@
-import Component from './index'
+import DynamicComponent from './DynamicComponent'
 import SbEditable from 'storyblok-react'
 
-const Page = ({body}) => (
-  <SbEditable content={body}>
+const Page = ({content}) => (
+  <SbEditable content={content}>
     <main>
-      {body.map((blok) =>
-        <Component blok={blok} key={blok._uid} />
+      {content.body.map((blok) =>
+        <DynamicComponent blok={blok} key={blok._uid} />
       )}
     </main>
   </SbEditable>

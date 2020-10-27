@@ -3,7 +3,7 @@ import StoryblokClient from 'storyblok-js-client'
 class StoryblokService {
   constructor() {
     this.devMode = true // Always loads draft
-    this.token = 'QSNdY5Q9nvVZW63T2KpF4wtt'
+    this.token = 'AAmqfGqVkzqqQsa4ZGwNAAtt'
     this.client = new StoryblokClient({
       accessToken: this.token,
       cache: {
@@ -19,6 +19,7 @@ class StoryblokService {
     return this.client.cacheVersion
   }
 
+  // ask Storyblok's Content API for content of story
   get(slug, params) {
     params = params || {}
 
@@ -33,15 +34,24 @@ class StoryblokService {
     return this.client.get(slug, params)
   }
 
+  // initialize the connection between Storyblok & Next.js in Visual Editor
   initEditor(reactComponent) {
     if (window.storyblok) {
       window.storyblok.init()
+
+      // reload on Next.js page on save or publish event in Storyblok Visual Editor
       window.storyblok.on(['change', 'published'], () => location.reload(true))
 
-      // this will alter the state and replaces the current story with a current raw story object (no resolved relations or links)
+      // Update state.story on input in Visual Editor
+      // this will alter the state and replaces the current story with a current raw story object and resolve relations
       window.storyblok.on('input', (event) => {
-        if (event.story.content._uid === reactComponent.state.pageContent._uid) {
-          reactComponent.setState({pageContent: window.storyblok.addComments(event.story.content, event.story.id)})
+        if (event.story.content._uid === reactComponent.state.story.content._uid) {
+          event.story.content = window.storyblok.addComments(event.story.content, event.story.id)
+          window.storyblok.resolveRelations(event.story, ['featured-articles.articles'], () => {
+            reactComponent.setState({
+              story: event.story
+            })
+          })
         }
       })
     }

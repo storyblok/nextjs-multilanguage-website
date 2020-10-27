@@ -1,17 +1,17 @@
 import Teaser from './Teaser'
 import Feature from './Feature'
+import FeaturedPosts from './FeaturedPosts'
 import Grid from './Grid'
 import Placeholder from './Placeholder'
-import Slide from './Slide'
 
 const Components = {
   'teaser': Teaser,
-  'feature': Feature,
   'grid': Grid,
-  'slide': Slide
+  'feature': Feature,
+  'featured-posts': FeaturedPosts
 }
 
-const Component = ({blok}) => {
+const DynamicComponent = ({blok}) => {
   if (typeof Components[blok.component] !== 'undefined') {
     const Component = Components[blok.component]
     return <Component blok={blok} />
@@ -19,4 +19,4 @@ const Component = ({blok}) => {
   return <Placeholder componentName={blok.component}/>
 }
 
-export default Component
+export default DynamicComponent
