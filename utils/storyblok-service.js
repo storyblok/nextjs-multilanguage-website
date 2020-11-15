@@ -42,7 +42,8 @@ class StoryblokService {
   }
 
   // initialize the connection between Storyblok & Next.js in Visual Editor
-  initEditor(reactComponent) {
+  initEditor(currentState) {
+    const [story, setStory] = currentState;
     if (window.storyblok) {
       window.storyblok.init();
 
@@ -52,20 +53,16 @@ class StoryblokService {
       // Update state.story on input in Visual Editor
       // this will alter the state and replaces the current story with a current raw story object and resolve relations
       window.storyblok.on('input', (event) => {
-        if (
-          event.story.content._uid === reactComponent.state.story.content._uid
-        ) {
+        if (event.story.content._uid === story.content._uid) {
           event.story.content = window.storyblok.addComments(
             event.story.content,
             event.story.id
           );
           window.storyblok.resolveRelations(
             event.story,
-            ['featured-articles.articles'],
+            ['featured-articles.articles', 'featured-posts.posts'],
             () => {
-              reactComponent.setState({
-                story: event.story,
-              });
+              setStory(event.story);
             }
           );
         }
