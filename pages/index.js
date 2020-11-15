@@ -10,14 +10,14 @@ function Home(props) {
 
   return (
     <Layout language={language}>
-      <Page content={story.content} />
+      <Page content={story.content} language={language} />
     </Layout>
   );
 }
 
-export async function getServerSideProps({ params }) {
-  let language = params?.language || 'en';
-  let insertLanguage = language !== 'en' ? `/${language}` : '';
+export async function getServerSideProps({ defaultLocale, locale }) {
+  const language = locale || defaultLocale;
+  let insertLanguage = language !== defaultLocale ? `/${language}` : '';
   let res = await StoryblokService.get(`cdn/stories${insertLanguage}/home`, {
     resolve_relations: 'featured-posts.posts',
   });
