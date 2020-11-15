@@ -2,7 +2,19 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, install dependencies:
+```bash
+npm i
+# or
+yarn install
+```
+
+Create `.env.local` and add `NEXT_PUBLIC_STORYBLOK_TOKEN=[Your Storyblok Token]`
+```bash
+touch .env.local
+```
+
+Run the development server:
 
 ```bash
 npm run dev
