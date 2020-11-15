@@ -1,42 +1,28 @@
-import Page from '../components/Page'
-import Layout from '../components/Layout'
-import StoryblokService from '../utils/storyblok-service'
+import Page from '../components/Page';
+import Layout from '../components/Layout';
+import StoryblokService from '../utils/storyblok-service';
+import useStoryblok from '../utils/useStorybrok';
 
-export default class extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      story: props.res.data.story,
-      language: props.language,
-    }
-  }
+function Home(props) {
+  const { story: initialStory, language } = props;
 
-  static async getInitialProps({ query }) {
-    StoryblokService.setQuery(query)
-    let language = query.language || "en"
-    let insertLanguage = language !== "en" ? `/${language}` : ""
-    let res = await StoryblokService.get(`cdn/stories${insertLanguage}/home`,
-    {
-      "resolve_relations": "featured-posts.posts"
-    })
+  const { story } = useStoryblok({ initialStory });
 
-    return {
-      res,
-      language
-    }
-  }
-
-  componentDidMount() {
-    StoryblokService.initEditor(this)
-  }
-
-  render() {
-    const contentOfStory = this.state.story.content
-
-    return (
-      <Layout language={this.state.language}>
-        <Page content={contentOfStory} />
-      </Layout>
-    )
-  }
+  return (
+    <Layout language={language}>
+      <Page content={story.content} />
+    </Layout>
+  );
 }
+
+export async function getServerSideProps({ params }) {
+  let language = params?.language || 'en';
+  let insertLanguage = language !== 'en' ? `/${language}` : '';
+  let res = await StoryblokService.get(`cdn/stories${insertLanguage}/home`, {
+    resolve_relations: 'featured-posts.posts',
+  });
+
+  return { props: { story: res.data.story, language } };
+}
+
+export default Home;

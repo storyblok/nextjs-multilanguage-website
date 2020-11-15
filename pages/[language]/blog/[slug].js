@@ -1,42 +1,27 @@
-import React from 'react'
-import Layout from '../../../components/Layout'
-import BlogPost from '../../../components/BlogPost'
-import StoryblokService from '../../../utils/storyblok-service'
+import React from 'react';
+import Layout from '../../../components/Layout';
+import BlogPost from '../../../components/BlogPost';
+import StoryblokService from '../../../utils/storyblok-service';
+import useStoryblok from '../../../utils/useStorybrok';
 
-export default class extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-          story: props.res.data.story,
-          language: props.language,
-        }
-      }
-    
-      static async getInitialProps({ asPath, query }) {
-        StoryblokService.setQuery(query)
-    
-        let language = query.language || "en"
-        let trimDefault = asPath.replace("/en/blog", "/blog")
-        let res = await StoryblokService.get(`cdn/stories${trimDefault}`)
-    
-        return {
-          res,
-          language,
-        }
-      }
-    
+function Post(props) {
+  const { story: initialStory, language } = props;
 
-  componentDidMount() {
-    StoryblokService.initEditor(this)
-  }
+  const { story } = useStoryblok({ initialStory });
 
-  render() {
-    const contentOfStory = this.state.story.content
-
-    return (
-      <Layout language={this.state.language}>
-        <BlogPost blok={contentOfStory} />
-      </Layout>
-    )
-  }
+  return (
+    <Layout language={language}>
+      <BlogPost blok={story.content} />
+    </Layout>
+  );
 }
+
+export async function getServerSideProps({ params, asPath, resolvedUrl }) {
+  let language = params.language || 'en';
+  let trimDefault = resolvedUrl.replace('/en/blog', '/blog');
+  let res = await StoryblokService.get(`cdn/stories${trimDefault}`);
+
+  return { props: { story: res.data.story, language } };
+}
+
+export default Post;
