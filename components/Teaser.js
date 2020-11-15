@@ -1,7 +1,6 @@
-import React from 'react'
-import SbEditable from 'storyblok-react'
+import SbEditable from 'storyblok-react';
 
-const Teaser = ({blok}) => {
+const Teaser = ({ blok }) => {
   return (
     <SbEditable content={blok}>
       <div className="bg-white-half">
@@ -11,7 +10,7 @@ const Teaser = ({blok}) => {
         </div>
       </div>
     </SbEditable>
-  )
-}
+  );
+};
 
-export default Teaser
+export default Teaser;

@@ -17,10 +17,7 @@ function Blog(props) {
 
         <ul>
           {posts.map((post) => (
-            <li
-              key={post._uid}
-              className="max-w-4xl px-10 my-4 py-6 rounded-lg shadow-md bg-white"
-            >
+            <li key={post._uid} className="max-w-4xl px-10 my-4 py-6 rounded-lg shadow-md bg-white">
               <div className="flex justify-between items-center">
                 <span className="font-light text-gray-600">
                   {`
@@ -32,8 +29,7 @@ function Blog(props) {
               <div className="mt-2">
                 <a
                   className="text-2xl text-gray-700 font-bold hover:text-gray-600"
-                  href={`${language}/blog/${post.slug}`}
-                >
+                  href={`${language}/blog/${post.slug}`}>
                   {post.content.title}
                 </a>
                 <p className="mt-2 text-gray-600">{post.content.intro}</p>
@@ -55,7 +51,7 @@ export async function getServerSideProps({ locale, defaultLocale }) {
   const language = locale || defaultLocale;
   let insertLanguage = language !== defaultLocale ? `${language}/` : '';
   let res = await StoryblokService.get(`cdn/stories`, {
-    starts_with: `${insertLanguage}blog/`,
+    starts_with: `${insertLanguage}blog/`
   });
 
   return { props: { stories: res.data.stories, language } };

@@ -1,4 +1,3 @@
-import React from 'react';
 import Layout from '../../components/Layout';
 import BlogPost from '../../components/BlogPost';
 import StoryblokService from '../../utils/storyblok-service';
@@ -16,11 +15,7 @@ function Post(props) {
   );
 }
 
-export async function getServerSideProps({
-  locale,
-  defaultLocale,
-  resolvedUrl,
-}) {
+export async function getServerSideProps({ locale, defaultLocale, resolvedUrl }) {
   const language = locale || defaultLocale;
   let trimDefault = resolvedUrl.replace('/en/blog', '/blog');
   let res = await StoryblokService.get(`cdn/stories${trimDefault}`);

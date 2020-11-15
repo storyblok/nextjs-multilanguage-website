@@ -19,7 +19,7 @@ export async function getServerSideProps({ defaultLocale, locale }) {
   const language = locale || defaultLocale;
   let insertLanguage = language !== defaultLocale ? `/${language}` : '';
   let res = await StoryblokService.get(`cdn/stories${insertLanguage}/home`, {
-    resolve_relations: 'featured-posts.posts',
+    resolve_relations: 'featured-posts.posts'
   });
 
   return { props: { story: res.data.story, language } };

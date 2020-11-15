@@ -1,5 +1,4 @@
-import React from 'react'
-import NextHead from 'next/head'
+import NextHead from 'next/head';
 
 const Head = ({ title, description }) => (
   <NextHead>
@@ -8,6 +7,6 @@ const Head = ({ title, description }) => (
     <meta name="description" content={description || ''} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </NextHead>
-)
+);
 
-export default Head
+export default Head;

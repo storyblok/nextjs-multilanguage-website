@@ -8,7 +8,7 @@ const Components = {
   teaser: Teaser,
   grid: Grid,
   feature: Feature,
-  'featured-posts': FeaturedPosts,
+  'featured-posts': FeaturedPosts
 };
 
 const DynamicComponent = ({ blok, language }) => {

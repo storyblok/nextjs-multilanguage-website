@@ -3,6 +3,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Getting Started
 
 First, install dependencies:
+
 ```bash
 npm i
 # or
@@ -10,6 +11,7 @@ yarn install
 ```
 
 Create `.env.local` and add `NEXT_PUBLIC_STORYBLOK_TOKEN=[Your Storyblok Token]`
+
 ```bash
 touch .env.local
 ```

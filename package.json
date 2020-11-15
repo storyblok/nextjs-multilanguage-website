@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "dependencies": {
     "axios": "^0.20.0",
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.1.2",
     "tailwindcss": "^1.9.6"
   }
 }
