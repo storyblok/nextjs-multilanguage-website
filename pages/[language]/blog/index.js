@@ -1,3 +1,4 @@
+import React from 'react'
 import Layout from "../../../components/Layout";
 import StoryblokService from "../../../utils/storyblok-service";
 
@@ -44,7 +45,7 @@ export default class extends React.Component {
               const lang = post.lang === "default" ? "/en" : `/${post.lang}`;
               return (
                 <li
-                  key={post._uid}
+                  key={post.slug}
                   className="max-w-4xl px-10 my-4 py-6 rounded-lg shadow-md bg-white"
                 >
                   <div className="flex justify-between items-center">

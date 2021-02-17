@@ -1,3 +1,4 @@
+import React from 'react'
 import Page from '../components/Page'
 import Layout from '../components/Layout'
 import StoryblokService from '../utils/storyblok-service'
