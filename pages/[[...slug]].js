@@ -4,14 +4,14 @@ import DynamicComponent from '../components/DynamicComponent'
 
 import Storyblok, { useStoryblok } from "../utils/storyblok"
 
-export default function Page({ story, preview, locale }) {
+export default function Page({ story, preview, locale, locales }) {
   const enableBridge = true; // load the storyblok bridge everywhere
   // use the preview variable to enable the bridge only in preview mode
   // const enableBridge = preview;
   story = useStoryblok(story, enableBridge)
 
   return (
-    <Layout language={locale}>
+    <Layout locale={locale} locales={locales}>
       <DynamicComponent blok={story.content} />
     </Layout>
   )
