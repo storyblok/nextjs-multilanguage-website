@@ -4,7 +4,7 @@ import SbEditable from "storyblok-react";
 const PostLists = ({ blok }) => {
   return (
     <SbEditable content={blok} key={blok._uid}>
-      <ul class="mx-auto w-full flex flex-col items-center">
+      <ul className="mx-auto w-full flex flex-col items-center">
         {blok.posts.map((post) => {
           const lang = post.lang === "default" ? "/en" : `/${post.lang}`;
           return (
