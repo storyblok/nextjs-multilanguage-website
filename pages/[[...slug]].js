@@ -8,7 +8,7 @@ export default function Page({ story, preview, locale, locales }) {
   const enableBridge = true; // load the storyblok bridge everywhere
   // use the preview variable to enable the bridge only in preview mode
   // const enableBridge = preview;
-  story = useStoryblok(story, enableBridge)
+  story = useStoryblok(story, enableBridge, locale)
 
   return (
     <Layout locale={locale} locales={locales}>

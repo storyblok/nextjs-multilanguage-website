@@ -6,6 +6,7 @@ import Placeholder from './Placeholder'
 import PostsList from './PostsList'
 import Page from './Page'
 import BlogPost from './BlogPost'
+import Text from './Text'
 
 const Components = {
   'teaser': Teaser,
@@ -14,6 +15,7 @@ const Components = {
   'featured-posts': FeaturedPosts,
   'page': Page,
   'post': BlogPost,
+  'text': Text,
   'selected-posts': PostsList,
 }
 

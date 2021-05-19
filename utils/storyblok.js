@@ -9,7 +9,7 @@ const Storyblok = new StoryblokClient({
   },
 });
 
-export function useStoryblok(originalStory, preview) {
+export function useStoryblok(originalStory, preview, locale) {
   let [story, setStory] = useState(originalStory);
 
   // adds the events for updating the visual editor
@@ -19,7 +19,8 @@ export function useStoryblok(originalStory, preview) {
     if (typeof StoryblokBridge !== "undefined") {
       // initialize the bridge with your token
       const storyblokInstance = new StoryblokBridge({
-        resolveRelations: ["featured-posts.posts", "selected-posts.posts"]
+        resolveRelations: ["featured-posts.posts", "selected-posts.posts"],
+        language: locale,
       });
 
       // reload on Next.js page on save or publish event in the Visual Editor
@@ -39,7 +40,8 @@ export function useStoryblok(originalStory, preview) {
         Storyblok
           .get(`cdn/stories/${event.storyId}`, {
             version: 'draft',
-            resolve_relations: ["featured-posts.posts", "selected-posts.posts"]
+            resolve_relations: ["featured-posts.posts", "selected-posts.posts"],
+            language: locale,
           })
           .then(({ data }) => {
             if(data.story) {
