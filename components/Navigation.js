@@ -1,12 +1,13 @@
 const Navigation = ({ locale, locales }) => {
   const resolveHome = {
     en: 'Home',
-    de: 'Startseite',
+    es: 'Página principal',
   }
   const resolveAbout = {
     en: 'About',
-    de: 'Über',
+    es: 'Acerca',
   }
+  const defaultLocale = locale === 'en' ? '/' : `/${locale}/`
   return (
   <header className="w-full bg-white">
     <nav className="" role="navigation">
@@ -38,13 +39,13 @@ const Navigation = ({ locale, locales }) => {
         <div className="w-full md:w-auto md:flex-grow md:flex md:items-center">
           <ul className="flex flex-col mt-4 -mx-4 pt-4 border-t md:flex-row md:items-center md:mx-0 md:mt-0 md:pt-0 md:mr-4 md:ml-auto lg:mr-8 md:border-0">
             <li>
-              <a href={`/${locale}`} className="block px-4 py-1 md:p-2 lg:px-8">{resolveHome[locale]}</a>
+              <a href={`${defaultLocale}`} className="block px-4 py-1 md:p-2 lg:px-8">{resolveHome[locale]}</a>
             </li>
             <li>
-              <a href={`/${locale}/blog`} className="block px-4 py-1 md:p-2 lg:px-8">Blog</a>
+              <a href={`${defaultLocale}blog`} className="block px-4 py-1 md:p-2 lg:px-8">Blog</a>
             </li>
              <li>
-              <a href={`/${locale}/about`} className="block px-4 py-1 md:p-2 lg:px-8">{resolveAbout[locale]}</a>
+              <a href={`${defaultLocale}about`} className="block px-4 py-1 md:p-2 lg:px-8">{resolveAbout[locale]}</a>
             </li>
           </ul>
           <ul className="flex flex-col mt-4 -mx-4 pt-4 border-t md:flex-row md:items-center md:mx-0 md:mt-0 md:pt-0 md:border-0">
