@@ -16,7 +16,7 @@ const FeaturedPosts = ({ blok }) => {
             const lang = post.lang === "default" ? "/en" : `/${post.lang}`;
 
             return (
-              <li key={post.content._uid} className="pr-8 w-1/3">
+              <li key={post.slug} className="pr-8 w-1/3">
                 <a
                   href={`${lang}/blog/${post.slug}`}
                   className="py-16 block transition hover:opacity-50"

@@ -1,26 +1,26 @@
 {
-  "name": "mynextwebsite",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "axios": "^0.21.1",
-    "marked": "^2.0.0",
-    "next": "10.0.7",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "storyblok-js-client": "^3.3.1",
-    "storyblok-react": "^0.1.2"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.2.4",
-    "postcss": "^8.2.6",
-    "postcss-preset-env": "^6.7.0",
-    "storyblok-rich-text-react-renderer": "^2.1.0",
-    "tailwindcss": "^2.0.3"
-  }
+    "name": "storyblok-nextjs-multi-language",
+    "version": "2.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start"
+    },
+    "dependencies": {
+        "axios": "^0.21.1",
+        "marked": "^2.0.3",
+        "next": "10.2.0",
+        "react": "17.0.2",
+        "react-dom": "17.0.2",
+        "storyblok-js-client": "^4.0.9",
+        "storyblok-react": "^0.1.2"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.2.5",
+        "postcss": "^8.2.15",
+        "postcss-preset-env": "^6.7.0",
+        "storyblok-rich-text-react-renderer": "^2.3.1",
+        "tailwindcss": "^2.1.2"
+    }
 }
