@@ -41,7 +41,7 @@ export async function getStaticProps({ locale, locales, params, preview = false 
       locale,
       locales,
     },
-    revalidate: 10, 
+    revalidate: 3600, // revalidate every hour
   }
 }
 
