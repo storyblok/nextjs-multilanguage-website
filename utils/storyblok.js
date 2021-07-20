@@ -30,7 +30,7 @@ export function useStoryblok(originalStory, preview, locale) {
 
       // live update the story on input events
       storyblokInstance.on("input", (event) => {
-        if (story && event.story._uid === story._uid) {
+        if (story && event.story.content._uid === story.content._uid) {
           setStory(event.story);
         }
       });
