@@ -1,6 +1,6 @@
-import Head from '../components/Head'
-import Navigation from '../components/Navigation'
-import Footer from '../components/Footer'
+import Head from "../components/Head";
+import Navigation from "../components/Navigation";
+import Footer from "../components/Footer";
 
 const Layout = ({ children, locale, locales }) => (
   <div className="bg-gray-300">
@@ -9,6 +9,6 @@ const Layout = ({ children, locale, locales }) => (
     {children}
     <Footer />
   </div>
-)
+);
 
-export default Layout
+export default Layout;

@@ -1,20 +1,20 @@
-import React from 'react'
-import Mail from './Mail'
-import Phone from './Phone'
-import Twitter from './Twitter'
+import React from "react";
+import Mail from "./Mail";
+import Phone from "./Phone";
+import Twitter from "./Twitter";
 
 const Components = {
-  'twitter': Twitter,
-  'mail': Mail,
-  'phone': Phone,
-}
+  twitter: Twitter,
+  mail: Mail,
+  phone: Phone,
+};
 
 const DynamicIcon = ({ type }) => {
-  if (typeof Components[type] !== 'undefined') {
-    const Component = Components[type]
-    return <Component />
+  if (typeof Components[type] !== "undefined") {
+    const Component = Components[type];
+    return <Component />;
   }
-  return null
-}
+  return null;
+};
 
-export default DynamicIcon
+export default DynamicIcon;
