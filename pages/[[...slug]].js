@@ -26,10 +26,15 @@ export async function getStaticProps({
   let slug = params.slug ? params.slug.join("/") : "home";
 
   let sbParams = {
-    version: "draft",
+    version: "draft", // or "published"
     resolve_relations: ["featured-posts.posts", "selected-posts.posts"],
     language: locale,
   };
+
+  if (preview) {
+    sbParams.version = "draft";
+    sbParams.cv = Date.now();
+  }
 
   let { data } = await Storyblok.get(`cdn/stories/${slug}`, sbParams);
 
