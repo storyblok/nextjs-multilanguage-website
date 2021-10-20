@@ -15,7 +15,7 @@ export function useStoryblok(originalStory, preview, locale) {
   // adds the events for updating the visual editor
   // see https://www.storyblok.com/docs/guide/essentials/visual-editor#initializing-the-storyblok-js-bridge
   function initEventListeners() {
-    const { StoryblokBridge } = window
+    const { StoryblokBridge } = window;
     if (typeof StoryblokBridge !== "undefined") {
       // initialize the bridge with your token
       const storyblokInstance = new StoryblokBridge({
@@ -35,23 +35,22 @@ export function useStoryblok(originalStory, preview, locale) {
         }
       });
 
-      storyblokInstance.on('enterEditmode', (event) => {
+      storyblokInstance.on("enterEditmode", (event) => {
         // loading the draft version on initial enter of editor
-        Storyblok
-          .get(`cdn/stories/${event.storyId}`, {
-            version: 'draft',
-            resolve_relations: ["featured-posts.posts", "selected-posts.posts"],
-            language: locale,
-          })
+        Storyblok.get(`cdn/stories/${event.storyId}`, {
+          version: "draft",
+          resolve_relations: ["featured-posts.posts", "selected-posts.posts"],
+          language: locale,
+        })
           .then(({ data }) => {
-            if(data.story) {
-              setStory(data.story)
+            if (data.story) {
+              setStory(data.story);
             }
           })
           .catch((error) => {
             console.log(error);
-          }) 
-      }) 
+          });
+      });
     }
   }
 
@@ -75,12 +74,16 @@ export function useStoryblok(originalStory, preview, locale) {
   }
 
   useEffect(() => {
-      // only load inside preview mode
-      if(preview) {
-        // first load the bridge, then initialize the event listeners
-        addBridge(initEventListeners);
-      } 
+    // only load inside preview mode
+    if (preview) {
+      // first load the bridge, then initialize the event listeners
+      addBridge(initEventListeners);
+    }
   }, []);
+
+  useEffect(() => {
+    setStory(originalStory);
+  }, [originalStory]);
 
   return story;
 }
