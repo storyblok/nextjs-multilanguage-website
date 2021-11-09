@@ -5,7 +5,7 @@ This is the example repository for building a multi-language blog with Storyblok
 Follow our [The Complete Guide to Build a Full Blown Multilanguage Website with Next.js](https://www.storyblok.com/tp/next-js-react-guide) tutorial to set it up
 
 1. Clone the example space with this link: <https://app.storyblok.com/#!/build/95804>
-2. Enter your preview token in the `util/storyblok.js` file
+2. Enter your preview token in the `utils/storyblok.js` file
 3. Install dependencies and start the development server `npm install && npm run dev`
 4. Add your [http://localhost:3000](http://localhost:3000) as the **default location URL** in your Storyblok space settings
 
