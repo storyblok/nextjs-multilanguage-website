@@ -81,6 +81,10 @@ export function useStoryblok(originalStory, preview, locale) {
     }
   }, []);
 
+  useEffect(() => {
+    setStory(originalStory);
+  }, [originalStory]);
+
   return story;
 }
 
