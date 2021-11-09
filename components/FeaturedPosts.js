@@ -1,5 +1,6 @@
 import React from "react";
 import SbEditable from "storyblok-react";
+import Link from "next/link";
 
 const FeaturedPosts = ({ blok }) => {
   return (
@@ -17,18 +18,17 @@ const FeaturedPosts = ({ blok }) => {
 
             return (
               <li key={post.slug} className="pr-8 w-1/3">
-                <a
-                  href={`${lang}/blog/${post.slug}`}
-                  className="py-16 block transition hover:opacity-50"
-                >
-                  <img src={post.content.image} className="pb-10 w-full" />
-                  <h2 className="pb-6 text-lg font-bold">
-                    {post.content.title}
-                  </h2>
-                  <p className="pb-6 text-gray-700 leading-loose">
-                    {post.content.intro}
-                  </p>
-                </a>
+                <Link href={`${lang}/blog/${post.slug}`}>
+                  <a className="py-16 block transition hover:opacity-50">
+                    <img src={post.content.image} className="pb-10 w-full" />
+                    <h2 className="pb-6 text-lg font-bold">
+                      {post.content.title}
+                    </h2>
+                    <p className="pb-6 text-gray-700 leading-loose">
+                      {post.content.intro}
+                    </p>
+                  </a>
+                </Link>
               </li>
             );
           })}
