@@ -1,11 +1,14 @@
 module.exports = {
   plugins: [
     "tailwindcss",
-    ["postcss-preset-env",{
-      stage: 1,
-      features: {
-        'focus-within-pseudo-class': false
-      }
-    }],
-  ]
-}
+    [
+      "postcss-preset-env",
+      {
+        stage: 1,
+        features: {
+          "focus-within-pseudo-class": false,
+        },
+      },
+    ],
+  ],
+};

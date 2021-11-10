@@ -10,6 +10,7 @@ export default function Page404({ preview, locale, locales, defaultLocale }) {
   const storyLoaded = useStoryblok(null, enableBridge, locale);
 
   let content = <h1>Not found</h1>;
+
   if (storyLoaded && storyLoaded.content)
     content = <DynamicComponent blok={storyLoaded.content} />;
 

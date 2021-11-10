@@ -2,12 +2,11 @@ module.exports = {
   purge: [],
   theme: {
     fontFamily: {
-      'sans': 'Roboto, Arial, sans-serif',
-      'serif': 'Merriweather, Georgia, serif'
+      sans: "Roboto, Arial, sans-serif",
+      serif: "Merriweather, Georgia, serif",
     },
-    extend: {
-    },
+    extend: {},
   },
   variants: {},
   plugins: [],
-}
+};

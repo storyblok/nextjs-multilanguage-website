@@ -9,7 +9,7 @@ const Navigation = ({ locale, locales, defaultLocale }) => {
     en: "About",
     es: "Acerca",
   };
-
+  
   const defaultRoot = locale === defaultLocale ? "/" : `/${locale}/`;
   return (
     <header className="w-full bg-white">
