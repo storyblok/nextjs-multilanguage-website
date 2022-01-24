@@ -1,6 +1,9 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Navigation = ({ locale, locales, defaultLocale }) => {
+  const router = useRouter();
+
   const resolveHome = {
     en: "Home",
     es: "Página principal",
@@ -9,7 +12,7 @@ const Navigation = ({ locale, locales, defaultLocale }) => {
     en: "About",
     es: "Acerca",
   };
-  
+
   const defaultRoot = locale === defaultLocale ? "/" : `/${locale}/`;
   return (
     <header className="w-full bg-white">
@@ -77,11 +80,13 @@ const Navigation = ({ locale, locales, defaultLocale }) => {
             </ul>
             <ul className="flex flex-col mt-4 -mx-4 pt-4 border-t md:flex-row md:items-center md:mx-0 md:mt-0 md:pt-0 md:border-0">
               {locales.map((loc) => {
+                const { pathname, query, asPath } = router;
                 return (
                   <li key={loc}>
                     <Link
-                      href={`/${loc === defaultLocale ? "" : loc}`}
-                      locale={false}
+                      href={{ pathname, query }}
+                      as={asPath}
+                      locale={loc}
                     >
                       <a
                         className={`block px-4 py-1 md:p-2 rounded-lg lg:px-4 ${
