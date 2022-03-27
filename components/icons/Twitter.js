@@ -1,6 +1,4 @@
-import React from "react";
-
-function Icon() {
+function Twitter() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="63" height="61">
       <g fill="none" fillRule="evenodd">
@@ -20,4 +18,4 @@ function Icon() {
   );
 }
 
-export default Icon;
+export default Twitter;

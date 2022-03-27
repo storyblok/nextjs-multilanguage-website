@@ -1,4 +1,3 @@
-import React from "react";
 import Mail from "./Mail";
 import Phone from "./Phone";
 import Twitter from "./Twitter";
