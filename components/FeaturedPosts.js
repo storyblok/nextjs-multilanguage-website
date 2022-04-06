@@ -5,7 +5,6 @@ const FeaturedPosts = ({ blok }) => {
   return (
     <div
       {...storyblokEditable(blok)}
-      key={blok._uid}
       className="py-8 mb-6 container mx-auto text-left"
     >
       <div className="relative">

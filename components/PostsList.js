@@ -5,7 +5,6 @@ const PostLists = ({ blok }) => {
   return (
     <ul
       {...storyblokEditable(blok)}
-      key={blok._uid}
       className="mx-auto w-full flex flex-col items-center"
     >
       {blok.posts.map((post) => {
