@@ -1,10 +1,9 @@
-import React from "react";
-import { sbEditable } from "@storyblok/storyblok-editable";
+import { storyblokEditable } from "@storyblok/react";
 import { render } from "storyblok-rich-text-react-renderer";
 
 const BlogPost = ({ blok }) => {
   return (
-    <div {...sbEditable(blok)} key={blok._uid}>
+    <div {...storyblokEditable(blok)}>
       <div className="bg-white-half w-full">
         <div className="max-w-3xl mx-auto text-center pt-20 flex flex-col items-center">
           <h1 className="text-5xl font-bold font-serif text-primary tracking-wide">
