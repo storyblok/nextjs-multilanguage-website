@@ -2,7 +2,7 @@
 
 This is the example repository for building a multi-language blog with Storyblok.
 
-Follow our [The Complete Guide to Build a Full Blown Multilanguage Website with Next.js](https://www.storyblok.com/tp/next-js-react-guide) tutorial to set it up
+Follow our [The Complete Guide to Build a Full Blown Multilanguage Website with Next.js](https://www.storyblok.com/tp/nextjs-headless-cms-ultimate-tutorial) tutorial to set it up
 
 1. Clone the example space with this link: <https://app.storyblok.com/#!/build/95804>
 2. Enter your preview token in the `pages/_app.js` file
