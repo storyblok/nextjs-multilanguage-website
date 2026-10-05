@@ -1,3 +1,7 @@
+> [!WARNING]
+> This repository is no longer maintained.
+> For a current Next.js + Storyblok starter, use [blueprint-core-nextjs](https://github.com/storyblok/blueprint-core-nextjs).
+
 ## Storyblok Next.js Multi-language Blog
 
 This is the example repository for building a multi-language blog with Storyblok.
